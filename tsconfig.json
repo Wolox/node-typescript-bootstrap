@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "esnext",
     "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist"
+    "resolveJsonModule": true,
+    "strict": false
   },
-  "lib": ["es2015"]
+  "exclude": [
+    "test/*"
+  ]
 }
