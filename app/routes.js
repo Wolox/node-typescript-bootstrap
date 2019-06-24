@@ -1,8 +1,10 @@
-// const controller = require('./controllers/controller');
 const { healthCheck } = require('./controllers/healthCheck');
+const { getUsers, getUserById, createUser } = require('./controllers/users');
+const { getTodos } = require('./controllers/todos');
 exports.init = app => {
   app.get('/health', healthCheck);
-  // app.get('/endpoint/get/path', [], controller.methodGET);
-  // app.put('/endpoint/put/path', [], controller.methodPUT);
-  // app.post('/endpoint/post/path', [], controller.methodPOST);
+  app.get('/users', getUsers);
+  app.post('/users', createUser);
+  app.get('/users/:id', getUserById);
+  app.get('/todos', getTodos);
 };

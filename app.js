@@ -1,8 +1,8 @@
 const express = require('express'),
   bodyParser = require('body-parser'),
-  morgan = require('morgan'),
   path = require('path'),
   cors = require('cors'),
+  { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
   config = require('./config'),
   routes = require('./app/routes'),
   errors = require('./app/middlewares/errors'),
@@ -29,14 +29,10 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 // Client must send "Content-Type: application/json" header
 app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
+app.use(expressRequestIdMiddleware);
 
 if (!config.isTesting) {
-  morgan.token('req-params', req => req.params);
-  app.use(
-    morgan(
-      '[:date[clf]] :remote-addr - Request ":method :url" with params: :req-params. Response status: :status.'
-    )
-  );
+  app.use(expressMiddleware);
 }
 
 routes.init(app);
