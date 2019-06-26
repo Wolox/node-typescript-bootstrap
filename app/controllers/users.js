@@ -8,11 +8,11 @@ exports.getUsers = (_, res, next) =>
 
 exports.createUser = (req, res, next) =>
   User.create({ username: req.body.username })
-    .then(() => res.end())
+    .then(() => res.status(201).end())
     .catch(next);
 
 exports.getUserById = (req, res, next) =>
-  User.findOne({ id: req.params.id })
+  User.findOne({ where: { id: req.params.id } })
     .then(user => {
       if (!user) {
         return next(errors.notFound('User not found'));
