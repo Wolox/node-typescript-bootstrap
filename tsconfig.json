@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "allowJs": true,
+        "baseurl": ".",
         "checkJs": false,
         "esModuleInterop": true,
         "downlevelIteration": true,
@@ -13,6 +14,8 @@
         "outDir": "dist",
         "skipLibCheck": true,
         "strict": true,
+        "strictFunctionTypes": false,
+        "strictPropertyInitialization": false,
         "target": "esnext"
     },
     "include": [
