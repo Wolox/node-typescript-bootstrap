@@ -1,3 +1,5 @@
+export = { };
+
 const errors = require('../errors'),
   logger = require('../logger');
 
@@ -9,7 +11,7 @@ const statusCodes = {
   [errors.NOT_FOUND]: 404
 };
 
-exports.handle = (error, _, res, next) => {
+exports.handle = (error: { internalCode: string | number; message: any; }, _: any, res: { status: { (arg0: number): void; (arg0: number): void; }; send: (arg0: { message: any; internal_code: any; }) => void; }, next: (arg0: any) => void) => {
   if (error.internalCode) {
     res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
   } else {
