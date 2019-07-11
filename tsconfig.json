@@ -1,18 +1,21 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "allowJs": true,
+        "checkJs": false,
         "esModuleInterop": true,
-        "target": "es6",
-        "moduleResolution": "node",
-        "sourceMap": true,
+        "downlevelIteration": true,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "module": "commonjs",
+        "noUnusedLocals": true,
         "outDir": "dist",
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-                "node_modules/*",
-                "src/types/*",
-                "app/*"
-            ]
-        }
-    }
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "esnext"
+    },
+    "include": [
+        "app"
+    ]
 }
