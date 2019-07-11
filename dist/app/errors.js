@@ -4,8 +4,8 @@ const internalError = (message, internalCode) => ({
     internalCode
 });
 exports.DATABASE_ERROR = 'database_error';
-exports.databaseError = message => internalError(message, exports.DATABASE_ERROR);
+exports.databaseError = (message) => internalError(message, exports.DATABASE_ERROR);
 exports.DEFAULT_ERROR = 'default_error';
-exports.defaultError = message => internalError(message, exports.DEFAULT_ERROR);
+exports.defaultError = (message) => internalError(message, exports.DEFAULT_ERROR);
 exports.NOT_FOUND = 'not_found';
-exports.notFound = message => internalError(message, exports.NOT_FOUND);
+exports.notFound = (message) => internalError(message, exports.NOT_FOUND);

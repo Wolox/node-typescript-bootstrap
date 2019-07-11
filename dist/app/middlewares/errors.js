@@ -18,3 +18,4 @@ exports.handle = (error, _, res, next) => {
     logger.error(error);
     return res.send({ message: error.message, internal_code: error.internalCode });
 };
+module.exports = {};

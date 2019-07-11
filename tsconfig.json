@@ -15,6 +15,7 @@
         "strict": true,
         "strictFunctionTypes": false,
         "strictPropertyInitialization": false,
+        "suppressImplicitAnyIndexErrors": true,
         "target": "esnext"
     },
     "include": [
