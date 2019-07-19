@@ -19,6 +19,6 @@
         "target": "esnext"
     },
     "include": [
-        "app"
+        "./"
     ]
 }

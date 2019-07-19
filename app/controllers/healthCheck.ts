@@ -1,1 +1,3 @@
-exports.healthCheck = (_: any, res: { status: (arg0: number) => { send: (arg0: { uptime: number; }) => void; }; }) => res.status(200).send({ uptime: process.uptime() });
+import { Response } from 'express';
+
+export const healthCheck = (_: any, res: Response) => res.status(200).send({ uptime: process.uptime() });

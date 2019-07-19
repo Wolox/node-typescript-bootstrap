@@ -1,13 +1,13 @@
-const internalError = (message: any, internalCode: any) => ({
+const internalError = (message: string, internalCode: string) => ({
   message,
   internalCode
 });
 
-exports.DATABASE_ERROR = 'database_error';
-exports.databaseError = (message: any) => internalError(message, exports.DATABASE_ERROR);
+export const DATABASE_ERROR = 'database_error';
+export const databaseError = (message: string) => internalError(message, DATABASE_ERROR);
 
-exports.DEFAULT_ERROR = 'default_error';
-exports.defaultError = (message: any) => internalError(message, exports.DEFAULT_ERROR);
+export const DEFAULT_ERROR = 'default_error';
+export const defaultError = (message: string) => internalError(message, DEFAULT_ERROR);
 
-exports.NOT_FOUND = 'not_found';
-exports.notFound = (message: any) => internalError(message, exports.NOT_FOUND);
+export const NOT_FOUND = 'not_found';
+export const notFound = (message: string) => internalError(message, NOT_FOUND);

@@ -1,10 +1,10 @@
-export { }; // https://medium.com/@muravitskiy.mail/cannot-redeclare-block-scoped-variable-varname-how-to-fix-b1c3d9cc8206
 
-const app = require('./app'),
-  Rollbar = require('rollbar'),
-  migrationsManager = require('./migrations'),
-  config = require('./config'),
-  logger = require('./app/logger');
+
+import app from './app';
+import Rollbar from 'rollbar';
+import migrationsManager from './migrations';
+import config from './config';
+import logger from './app/logger';
 
 const port = config.common.api.port || 8080;
 

@@ -1,4 +1,4 @@
-const rp = require('request-promise');
+import rp from 'request-promise';
 const { baseUrl } = require('../../config').todos;
 
-exports.getAllTodos = () => rp({ uri: `${baseUrl}/todos`, json: true });
+export const getAllTodos = () => rp({ uri: `${baseUrl}/todos`, json: true });

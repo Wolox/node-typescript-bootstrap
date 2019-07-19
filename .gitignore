@@ -1,6 +1,9 @@
 # Frontend Dist Files
 app/dist
 
+# Dist directory
+dist
+
 # Mac Files
 .DS_Store
 */DS_Store

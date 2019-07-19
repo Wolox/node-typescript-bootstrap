@@ -1,6 +1,7 @@
-const { getAllTodos } = require('../services/todos');
+import { Response, NextFunction } from 'express';
+import { getAllTodos } from '../services/todos';
 
-exports.getTodos = (_: any, res: { send: (arg0: any) => void; }, next: any) =>
+export const getTodos = (_: any, res: Response, next: NextFunction) =>
   getAllTodos()
     .then((todos: any) => res.send(todos))
     .catch(next);

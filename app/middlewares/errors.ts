@@ -1,7 +1,7 @@
-export = { };
+import { Response, NextFunction } from 'express';
 
-const errors = require('../errors'),
-  logger = require('../logger');
+import * as errors from '../errors';
+import logger from '../logger';
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -11,7 +11,12 @@ const statusCodes = {
   [errors.NOT_FOUND]: 404
 };
 
-exports.handle = (error: { internalCode: string | number; message: any; }, _: any, res: { status: { (arg0: number): void; (arg0: number): void; }; send: (arg0: { message: any; internal_code: any; }) => void; }, next: (arg0: any) => void) => {
+export const handle = (
+  error: { internalCode: string | number; message: any },
+  _: any,
+  res: Response,
+  next: NextFunction
+) => {
   if (error.internalCode) {
     res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
   } else {

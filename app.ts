@@ -1,13 +1,15 @@
-const express = require('express'),
-  bodyParser = require('body-parser'),
-  path = require('path'),
-  cors = require('cors'),
-  { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
+import cors from 'cors';
+import config from './config';
+import * as routes from './app/routes';
+import * as errors from './app/middlewares/errors';
+
+const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
+
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
 
 const bodyParserJsonConfig = () => ({
   parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
@@ -39,4 +41,4 @@ routes.init(app);
 
 app.use(errors.handle);
 
-module.exports = app;
+export default app;

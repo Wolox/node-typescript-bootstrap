@@ -1,17 +1,18 @@
+import { Request, Response, NextFunction } from 'express';
+import * as errors from '../errors';
 const User = require('../models').users;
-const errors = require('../errors');
 
-exports.getUsers = (_: any, res: { send: (arg0: any) => void; }, next: any) =>
+export const getUsers = (_: any, res: Response, next: NextFunction) =>
   User.findAll()
     .then((users: any) => res.send(users))
     .catch(next);
 
-exports.createUser = (req: { body: { username: any; }; }, res: { status: (arg0: number) => { end: () => void; }; }, next: any) =>
+export const createUser = (req: Request, res: Response, next: NextFunction) =>
   User.create({ username: req.body.username })
     .then(() => res.status(201).end())
     .catch(next);
 
-exports.getUserById = (req: { params: { id: any; }; }, res: { send: (arg0: any) => void; }, next: (arg0: any) => void) =>
+export const getUserById = (req: Request, res: Response, next: NextFunction) =>
   User.findOne({ where: { id: req.params.id } })
     .then((user: any) => {
       if (!user) {
