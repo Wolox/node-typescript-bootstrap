@@ -1,17 +1,17 @@
-const Umzug = require('umzug'),
-  config = require('./../config/'),
-  { sequelize } = require('../app/models'),
-  logger = require('../app/logger');
+import Umzug from 'umzug';
+import config from './../config/';
+import models from '../app/models';
+import logger from '../app/logger';
 
-exports.check = () => {
+export const check = () => {
   const umzug = new Umzug({
     logging: logger.info,
     storage: 'sequelize',
-    storageOptions: { sequelize },
+    storageOptions: { sequelize: models.sequelize },
     migrations: {
       params: [
-        sequelize.getQueryInterface(),
-        sequelize.constructor,
+        models.sequelize.getQueryInterface(),
+        models.sequelize.constructor,
         () => {
           throw new Error('Migration tried to use old style "done" callback.upgrade');
         }
@@ -30,6 +30,6 @@ exports.check = () => {
         return Promise.reject(new Error('There are pending migrations that could not be executed'));
       });
     }
-    return Promise.resolve();
+    return Promise.resolve([]);
   });
 };

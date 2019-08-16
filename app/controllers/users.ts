@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import * as errors from '../errors';
-const User = require('../models').users;
+import models from '../models';
+
+const User = models.users;
 
 export const getUsers = (_: any, res: Response, next: NextFunction) =>
   User.findAll()
