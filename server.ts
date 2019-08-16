@@ -1,8 +1,8 @@
-const app = require('./app'),
-  Rollbar = require('rollbar'),
-  migrationsManager = require('./migrations'),
-  config = require('./config'),
-  logger = require('./app/logger');
+import app from './app';
+import Rollbar from 'rollbar';
+import * as migrationsManager from './migrations';
+import * as config from './config';
+import logger from './app/logger';
 
 const port = config.common.api.port || 8080;
 

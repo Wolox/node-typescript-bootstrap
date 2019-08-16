@@ -1,5 +1,7 @@
-const errors = require('../errors'),
-  logger = require('../logger');
+import { Response, NextFunction } from 'express';
+
+import * as errors from '../errors';
+import logger from '../logger';
 
 const DEFAULT_STATUS_CODE = 500;
 
@@ -9,7 +11,12 @@ const statusCodes = {
   [errors.NOT_FOUND]: 404
 };
 
-exports.handle = (error, _, res, next) => {
+export const handle = (
+  error: { internalCode: string | number; message: any },
+  _: any,
+  res: Response,
+  next: NextFunction
+) => {
   if (error.internalCode) {
     res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
   } else {
