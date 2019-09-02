@@ -1,5 +1,5 @@
 import Umzug from 'umzug';
-import config from './../config/';
+import config from './../config';
 import models from '../app/models';
 import logger from '../app/logger';
 
@@ -16,7 +16,7 @@ export const check = () => {
           throw new Error('Migration tried to use old style "done" callback.upgrade');
         }
       ],
-      path: `${__dirname}/migrations`,
+      path: `${process.cwd()}/dist/migrations/migrations`,
       pattern: /\.js$/
     }
   });

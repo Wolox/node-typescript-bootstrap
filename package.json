@@ -10,20 +10,21 @@
     "build": "tsc",
     "console": "node console.js",
     "cover": "NODE_ENV=testing jest --coverage --runInBand --forceExit test/app",
-    "test": "NODE_ENV=testing jest test/app --runInBand --forceExit",
+    "test": "NODE_ENV=testing jest dist/test/app --runInBand --forceExit",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
-    "lint": "eslint \"**/*.js\" --ignore-pattern ./.eslintrc.js",
-    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
-    "lint-fix": "eslint \"**/*.js\" --fix --ignore-pattern ./.eslintrc.js",
+    "lint": "eslint \"**/*.ts\" --ignore-pattern ./.eslintrc.js",
+    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.ts$ | xargs eslint",
+    "lint-fix": "eslint \"**/*.ts\" --fix --ignore-pattern ./.eslintrc.js",
     "precommit": "npm run lint-diff",
+    "postinstall": "npm run build",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "prestart": "npm run lint",
-    "migrations": "sequelize db:migrate",
-    "migrations-test": "NODE_ENV=testing sequelize db:migrate",
-    "start": "nodemon --inspect server.js"
+    "migrations": "tsc && sequelize db:migrate",
+    "migrations-test": "tsc && NODE_ENV=testing sequelize db:migrate",
+    "start": "ts-node-dev --respawn --transpileOnly ./server.ts"
   },
   "cacheDirectories": [
     "node_modules"
@@ -65,6 +66,7 @@
     "jwt-simple": "^0.5.1",
     "morgan": "^1.9.1",
     "pg": "^7.4.1",
+    "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
     "sequelize": "^5.15.0",
@@ -112,7 +114,7 @@
     "prompt": "^1.0.0",
     "sequelize-cli": "^4.0.0",
     "supertest": "^3.4.2",
-    "ts-node": "^8.3.0",
+    "ts-node-dev": "1.0.0-pre.40",
     "typescript": "^3.5.2"
   }
 }

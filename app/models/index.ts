@@ -3,8 +3,8 @@ import path from 'path';
 import { Sequelize } from 'sequelize';
 
 import { Models } from '../../types/models';
-import * as config from '../../config';
-import * as dbConfiguration from '../../config/db';
+import config from '../../config';
+import dbConfiguration from './../../config/db';
 
 const dbConfig = dbConfiguration[config.environment];
 const models = {};
