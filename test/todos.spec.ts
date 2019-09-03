@@ -1,9 +1,8 @@
 const mockedResponse = [{ name: 'a' }];
 jest.doMock('request-promise', () => () => Promise.resolve(mockedResponse));
 
-const request = require('supertest'),
-  dictum = require('dictum.js'),
-  app = require('../app');
+import request from 'supertest';
+import app from '../app';
 
 describe('todos', () => {
   describe('/todos GET', () => {
@@ -13,7 +12,6 @@ describe('todos', () => {
         .expect(200)
         .then(res => {
           expect(res.body).toStrictEqual(mockedResponse);
-          dictum.chai(res);
           done();
         });
     });

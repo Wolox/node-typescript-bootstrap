@@ -1,7 +1,8 @@
-const request = require('supertest'),
-  dictum = require('dictum.js'),
-  User = require('../app/models').users,
-  app = require('../app');
+import request from 'supertest';
+import models from '../app/models';
+import app from '../app';
+
+const User = models.users;
 
 describe('users', () => {
   beforeEach(() => User.bulkCreate([{ username: 'u1' }, { username: 'u2' }]));
@@ -12,7 +13,6 @@ describe('users', () => {
         .expect(200)
         .then(res => {
           expect(res.body.length).toBe(2);
-          dictum.chai(res);
           done();
         });
     });
@@ -24,10 +24,9 @@ describe('users', () => {
         .post('/users')
         .send({ username: 'u3' })
         .expect(201)
-        .then(async res => {
+        .then(async () => {
           const user = await User.findOne({ where: { username: 'u3' } });
           expect(user).not.toBeNull();
-          dictum.chai(res);
           done();
         });
     });
@@ -41,7 +40,6 @@ describe('users', () => {
         .then(res => {
           expect(res.body).toHaveProperty('username');
           expect(res.body).toHaveProperty('id');
-          dictum.chai(res);
           done();
         });
     });
