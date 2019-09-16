@@ -1,3 +1,5 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
+import { statusCodes } from './commons';
 
-export const healthCheck = (_: any, res: Response) => res.status(200).send({ uptime: process.uptime() });
+export const healthCheck = (_: Request, res: Response): Response =>
+  res.status(statusCodes.success).send({ uptime: process.uptime() });

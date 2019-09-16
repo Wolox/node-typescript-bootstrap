@@ -1,26 +1,27 @@
-import { Request, Response, NextFunction } from 'express';
-import * as errors from '../errors';
+import { NextFunction, Request, Response } from 'express';
 import models from '../models';
+import { statusCodes } from './commons';
+import { notFound } from '../errors';
+import { IUserModel } from '../../types/models';
 
 const User = models.users;
 
-export const getUsers = (_: any, res: Response, next: NextFunction) =>
+export const getUsers = (_: Request, res: Response, next: NextFunction): Promise<Response | void> =>
   User.findAll()
-    .then((users: any) => res.send(users))
+    .then((users: IUserModel[]) => res.send(users))
     .catch(next);
 
-export const createUser = (req: Request, res: Response, next: NextFunction) =>
+export const createUser = (req: Request, res: Response, next: NextFunction): Promise<void> =>
   User.create({ username: req.body.username })
-    .then(() => res.status(201).end())
+    .then(() => res.status(statusCodes.created).end())
     .catch(next);
 
-export const getUserById = (req: Request, res: Response, next: NextFunction) =>
+export const getUserById = (req: Request, res: Response, next: NextFunction): Promise<Response | void> =>
   User.findOne({ where: { id: req.params.id } })
-    .then((user: any) => {
+    .then((user: IUserModel) => {
       if (!user) {
-        return next(errors.notFound('User not found'));
+        throw notFound('User not found');
       }
-
       return res.send(user);
     })
     .catch(next);

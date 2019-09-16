@@ -3,8 +3,9 @@ import Rollbar from 'rollbar';
 import * as migrationsManager from './migrations';
 import config from './config';
 import logger from './app/logger';
+const defaultPort = 8080;
 
-const port = config.common.api.port || 8080;
+const port = config.common.api.port || defaultPort;
 
 Promise.resolve()
   .then(() => migrationsManager.check())
@@ -21,3 +22,4 @@ Promise.resolve()
     logger.info(`Listening on port: ${port}`);
   })
   .catch(logger.error);
+

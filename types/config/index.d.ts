@@ -1,6 +1,6 @@
 type ENV_VAR = string | undefined;
 
-export interface Config {
+export interface IConfig {
   common: {
     database: {
       host: ENV_VAR,
@@ -18,6 +18,7 @@ export interface Config {
       environment: ENV_VAR
     },
     session: {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       header_name: ENV_VAR,
       secret: ENV_VAR
     }

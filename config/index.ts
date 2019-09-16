@@ -1,20 +1,21 @@
-import { Config } from './../types/config';
+import { IConfig } from '../types/config';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dbConfiguration = require('./db');
 
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
-
 if (ENVIRONMENT !== 'production') {
   require('dotenv').config();
 }
 
 const configFile = `./${ENVIRONMENT}`;
 
-const isObject = (variable: any) => variable instanceof Object;
+const isObject = (variable: unknown): boolean => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
  */
-const assignObject = (target: object, source: Config) => {
+const assignObject = <T> (target: T, source: IConfig): T & IConfig | T => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
@@ -27,14 +28,9 @@ const assignObject = (target: object, source: Config) => {
   return target;
 };
 
-const config: Config = {
+const config: IConfig = {
   common: {
-    database: {
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD
-    },
+    database: dbConfiguration[ENVIRONMENT],
     api: {
       bodySizeLimit: process.env.API_BODY_SIZE_LIMIT,
       parameterLimit: process.env.API_PARAMETER_LIMIT,
@@ -45,6 +41,7 @@ const config: Config = {
       environment: process.env.ROLLBAR_ENV
     },
     session: {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
     }
@@ -55,5 +52,7 @@ const config: Config = {
 };
 
 const customConfig = require(configFile).config;
+
 assignObject(customConfig, config);
+
 export default customConfig;

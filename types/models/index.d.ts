@@ -1,18 +1,20 @@
 import { Sequelize, Model, BuildOptions } from 'sequelize';
 
-export interface Models {
-  users: User;
+export interface IModels {
+  users: UserModel;
   sequelize: Sequelize;
 }
 
-export interface SequelizeModel extends Model {
-  associate: (db: dbType) => void;
+export interface ISequelizeModel extends Model {
+  associate: (db: dbType)=> void;
 }
 
-export type User = typeof Model & {
-  new (values?: object, options?: BuildOptions): UserModel;
+export type UserModel = typeof Model & {
+  new (values?: object, options?: BuildOptions): IUserModel;
 };
 
-export interface UserModel extends SequelizeModel {
+
+export interface IUserModel extends ISequelizeModel {
   id: number;
+  username: string;
 }
