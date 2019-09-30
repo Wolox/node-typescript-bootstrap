@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "console": "node console.js",
+    "console": "tsc && node --experimental-repl-await ./dist/console.js",
     "cover": "NODE_ENV=testing jest --coverage --runInBand --forceExit",
     "test": "NODE_ENV=testing jest --runInBand --forceExit",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest",
