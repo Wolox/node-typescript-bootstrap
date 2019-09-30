@@ -75,7 +75,7 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
-    "sequelize": "^5.15.0",
+    "sequelize": "^5.19.1",
     "umzug": "^2.1.0",
     "winston": "^2.4.0",
     "winston-daily-rotate-file": "^1.7.2"

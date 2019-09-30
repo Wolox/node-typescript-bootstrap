@@ -2,7 +2,8 @@ exports.config = {
   environment: 'production',
   common: {
     database: {
-      name: process.env.DB_NAME
+      database: process.env.DB_NAME,
+      logging: false
     }
   },
   isProduction: true

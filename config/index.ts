@@ -1,8 +1,9 @@
+import logger from '../app/logger';
+
 import { IConfig } from '../types/config';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const dbConfiguration = require('./db');
 
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
+
 if (ENVIRONMENT !== 'production') {
   require('dotenv').config();
 }
@@ -15,7 +16,7 @@ const isObject = (variable: unknown): boolean => variable instanceof Object;
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
  */
-const assignObject = <T> (target: T, source: IConfig): T & IConfig | T => {
+const assignObject = <T>(target: T, source: IConfig): T & IConfig | T => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
@@ -29,8 +30,17 @@ const assignObject = <T> (target: T, source: IConfig): T & IConfig | T => {
 };
 
 const config: IConfig = {
+  environment: ENVIRONMENT,
   common: {
-    database: dbConfiguration[ENVIRONMENT],
+    database: {
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      database: process.env.DB_NAME,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      dialect: 'postgres',
+      logging: logger.info
+    },
     api: {
       bodySizeLimit: process.env.API_BODY_SIZE_LIMIT,
       parameterLimit: process.env.API_PARAMETER_LIMIT,

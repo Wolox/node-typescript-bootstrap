@@ -3,7 +3,8 @@ exports.config = {
   isTesting: true,
   common: {
     database: {
-      name: process.env.DB_NAME_TEST
+      database: process.env.DB_NAME_TEST,
+      logging: false
     },
     session: {
       secret: 'some-super-secret'
