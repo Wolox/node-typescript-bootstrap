@@ -9,22 +9,23 @@
   "scripts": {
     "build": "tsc",
     "console": "tsc && node --experimental-repl-await ./dist/console.js",
-    "cover": "NODE_ENV=testing jest --coverage --runInBand --forceExit",
-    "test": "NODE_ENV=testing jest --runInBand --forceExit",
-    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "cover": "npm run test-basic -- --coverage",
+    "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
     "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint \"*/**/*.ts\" --ignore-pattern ./.eslintrc.js",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.ts$ | xargs eslint",
     "lint-fix": "eslint \"**/*.ts\" --fix --ignore-pattern ./.eslintrc.js",
-    "precommit": "npm run lint-diff",
-    "postinstall": "npm run build",
-    "outdated": "npm outdated --depth 0",
-    "pretest": "npm run lint",
-    "prestart": "npm run lint",
     "migrations": "tsc && sequelize db:migrate",
     "migrations-test": "tsc && NODE_ENV=testing sequelize db:migrate",
-    "start": "ts-node-dev --respawn --transpileOnly ./server.ts"
+    "outdated": "npm outdated --depth 0",
+    "postinstall": "npm run build",
+    "precommit": "npm run lint-diff",
+    "prestart": "npm run lint",
+    "pretest": "npm run lint",
+    "start": "npm run build && node ./dist/server.js",
+    "test": "npm run test-basic -- --runInBand",
+    "test-basic": "NODE_ENV=testing jest --forceExit --silent --detectOpenHandles",
+    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk --detectOpenHandles jest"
   },
   "cacheDirectories": [
     "node_modules"
