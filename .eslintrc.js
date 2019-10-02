@@ -9,10 +9,9 @@ module.exports = {
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": false,
-    },
-    "project": "./tsconfig.json",
+    "project": './tsconfig.json',
+    "tsconfigRootDir": __dirname,
+    "createDefaultProgram": true
   },
   "plugins": [
     "@typescript-eslint/tslint"
