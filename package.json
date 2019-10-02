@@ -14,7 +14,7 @@
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
-    "lint": "eslint \"app/**/*.ts\" --ignore-pattern ./.eslintrc.js",
+    "lint": "eslint \"*/**/*.ts\" --ignore-pattern ./.eslintrc.js",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.ts$ | xargs eslint",
     "lint-fix": "eslint \"**/*.ts\" --fix --ignore-pattern ./.eslintrc.js",
     "precommit": "npm run lint-diff",

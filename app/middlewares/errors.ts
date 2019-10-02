@@ -1,3 +1,5 @@
+import { inspect } from 'util';
+
 import { Response, NextFunction } from 'express';
 
 import * as ErrorCode from '../errors';
@@ -24,7 +26,7 @@ export const handle = (
     next(error);
     res.status(DEFAULT_STATUS_CODE);
   }
-  logger.error(error);
+  logger.error(inspect(error));
   // eslint-disable-next-line @typescript-eslint/camelcase
   return res.send({ message: error.message, internal_code: error.internalCode });
 };

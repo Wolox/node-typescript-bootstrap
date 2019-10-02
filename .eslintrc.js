@@ -49,7 +49,6 @@ module.exports = {
       }
     ],
     "@typescript-eslint/no-extraneous-class": ["error"],
-    "@typescript-eslint/no-floating-promises": ["error"],
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-misused-promises": ["error"],
     '@typescript-eslint/no-this-alias': ['error',{ allowDestructuring: true }],
@@ -59,7 +58,6 @@ module.exports = {
     "@typescript-eslint/prefer-readonly": ["error"],
     "@typescript-eslint/prefer-string-starts-ends-with": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
-    "@typescript-eslint/type-annotation-spacing": ["error", {before: false, after: true}],
     "@typescript-eslint/unbound-method": [ "error"],
     "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
     "@typescript-eslint/camelcase": "off"

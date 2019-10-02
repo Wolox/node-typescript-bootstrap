@@ -1,5 +1,6 @@
 const mockedResponse = [{ name: 'a' }];
-jest.doMock('request-promise', () => () => Promise.resolve(mockedResponse));
+
+jest.doMock('request-promise', () => (): Promise<object> => Promise.resolve(mockedResponse));
 
 import request from 'supertest';
 import app from '../app';

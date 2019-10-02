@@ -3,7 +3,7 @@ import config from './../config';
 import models from '../app/models';
 import logger from '../app/logger';
 
-export const check = () => {
+export const check = (): Promise<unknown> => {
   const umzug = new Umzug({
     logging: logger.info,
     storage: 'sequelize',
@@ -12,7 +12,7 @@ export const check = () => {
       params: [
         models.sequelize.getQueryInterface(),
         models.sequelize.constructor,
-        () => {
+        (): Error => {
           throw new Error('Migration tried to use old style "done" callback.upgrade');
         }
       ],
