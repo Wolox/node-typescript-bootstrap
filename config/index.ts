@@ -1,6 +1,7 @@
 import logger from '../app/logger';
 
 import { IConfig } from '../types/config';
+import { DeepPartial } from '../types/utils';
 
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
 
@@ -9,22 +10,22 @@ if (ENVIRONMENT !== 'production') {
 }
 
 const configFile = `./${ENVIRONMENT}`;
+const environmentConfig = require(configFile).config;
 
 const isObject = (variable: unknown): boolean => variable instanceof Object;
 
 /*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
+ * Deep immutable copy of source object into tarjet object and returns a new object.
  */
-const assignObject = <T>(target: T, source: IConfig): T & IConfig | T => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
+const deepMerge = (target: IConfig, source: DeepPartial<IConfig>): IConfig => {
+  if (isObject(target) && isObject(source)) {
+    return Object.keys(source).reduce(
+      (output, key) => ({
+        ...output,
+        [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
+      }),
+      { ...target }
+    );
   }
   return target;
 };
@@ -61,8 +62,6 @@ const config: IConfig = {
   }
 };
 
-const customConfig = require(configFile).config;
-
-assignObject(customConfig, config);
+const customConfig: IConfig = deepMerge(config, environmentConfig);
 
 export default customConfig;
