@@ -9,7 +9,7 @@ steps:
   copy_node_modules:
     - cp -r $NODE_PATH/ ./
   migrate_db:
-    - node_modules/.bin/sequelize db:migrate
+    - npm run migrations
   lint:
     - npm run lint
   test:

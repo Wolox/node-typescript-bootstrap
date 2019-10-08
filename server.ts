@@ -10,16 +10,17 @@ const port = config.common.api.port || defaultPort;
 Promise.resolve()
   .then(() => migrationsManager.check())
   .then(() => {
-    const rollbar = new Rollbar({
-      accessToken: config.common.rollbar.accessToken,
-      enabled: !!config.common.rollbar.accessToken,
-      environment: config.common.rollbar.environment || config.environment
-    });
-    app.use(rollbar.errorHandler());
+    if (config.common.rollbar) {
+      const rollbar = new Rollbar({
+        accessToken: config.common.rollbar.accessToken,
+        enabled: !!config.common.rollbar.accessToken,
+        environment: config.common.rollbar.environment || config.environment
+      });
+      app.use(rollbar.errorHandler());
+    }
 
     app.listen(port);
 
     logger.info(`Listening on port: ${port}`);
   })
   .catch(logger.error);
-

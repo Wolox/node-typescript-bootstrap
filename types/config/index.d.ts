@@ -1,15 +1,20 @@
+import { Dialect } from 'sequelize';
+
 type ENV_VAR = string | undefined;
 
 export interface IConfig {
+  isDevelopment?: boolean;
+  isProduction?: boolean;
+  isTesting?: boolean;
   environment: string;
   common: {
     database: {
-      host: ENV_VAR;
-      port: ENV_VAR;
-      database: ENV_VAR;
-      username: ENV_VAR;
-      password: ENV_VAR;
-      dialect: string;
+      host: string;
+      port: number;
+      database: string;
+      username: string;
+      password: string;
+      dialect: Dialect;
       logging: boolean;
     };
     api: {
