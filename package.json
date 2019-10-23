@@ -20,6 +20,7 @@
     "outdated": "npm outdated --depth 0",
     "postinstall": "npm run build",
     "precommit": "npm run lint-diff",
+    "prepush": "npm test",
     "prestart": "npm run lint",
     "pretest": "npm run lint",
     "start": "npm run build && node ./dist/server.js",
