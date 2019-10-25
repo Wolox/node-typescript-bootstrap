@@ -10,6 +10,7 @@ const DEFAULT_STATUS_CODE = 500;
 const statusCodes = {
   [ErrorCode.DATABASE_ERROR]: 503,
   [ErrorCode.DEFAULT_ERROR]: 500,
+  [ErrorCode.AUTH_ERROR]: 401,
   [ErrorCode.NOT_FOUND]: 404
 };
 
