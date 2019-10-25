@@ -1,5 +1,6 @@
 import Umzug from 'umzug';
-import config from './../config';
+
+import config from '../config';
 import models from '../app/models';
 import logger from '../app/logger';
 
