@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,                          /* Allow javascript files to be compiled. */
+    "baseUrl": ".",                           /* Base directory to resolve non-relative module names. */
     "checkJs": false,                         /* Report errors in .js files. */
     "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
     "downlevelIteration": true,               /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
@@ -14,7 +15,11 @@
     "strictFunctionTypes": false,             /* Enable strict checking of function types. */
     "strictPropertyInitialization": false,    /* Enable strict checking of property initialization in classes. */
     "suppressImplicitAnyIndexErrors": true,   /* Suppress --noImplicitAny errors for indexing objects lacking index signatures. */
-    "target": "esnext"                        /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "target": "esnext",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "paths": {
+      "*": ["node_modules/@types/*", "types/*"]
+    }
   },
-  "include": ["./"]
+  "include": ["./"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "dist"]
 }

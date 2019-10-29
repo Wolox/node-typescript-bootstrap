@@ -1,7 +1,7 @@
 import { QueryInterface, DataTypes } from 'sequelize';
 
 module.exports = {
-  up: (queryInterface: QueryInterface, Sequelize: typeof DataTypes): Promise<void> =>
+  up: (queryInterface: QueryInterface, Sequelize: DataTypes): Promise<void> =>
     queryInterface.createTable('users', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       username: { type: Sequelize.STRING, allowNull: false }

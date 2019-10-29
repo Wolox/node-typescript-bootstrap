@@ -27,9 +27,8 @@ export interface IConfig {
       environment: ENV_VAR;
     };
     session: {
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      header_name: ENV_VAR;
-      secret: ENV_VAR;
+      header_name: string; // eslint-disable-line @typescript-eslint/camelcase
+      secret: string;
     };
   };
   todos: {

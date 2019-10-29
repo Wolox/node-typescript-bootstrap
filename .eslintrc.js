@@ -1,9 +1,9 @@
 module.exports = {
-  env: {
-    es6: true,
-    node: true,
-    browser: true,
-    jest: true
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "jest": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -14,18 +14,15 @@ module.exports = {
     "createDefaultProgram": true
   },
   "plugins": [
-    "@typescript-eslint/tslint"
+    "@typescript-eslint/tslint",
+    "prettier"
   ],
-  extends: [
+  "extends": [
     "plugin:@typescript-eslint/recommended",
-    "prettier",
     "prettier/@typescript-eslint",
     "wolox-node"
   ],
-  globals: {
-    __DEV__: true
-  },
-  rules: {
+  "rules": {
     "@typescript-eslint/array-type": "array",
     "@typescript-eslint/class-name-casing": ["error", { "allowUnderscorePrefix": true }],
     "@typescript-eslint/consistent-type-assertions": "error",
@@ -42,15 +39,15 @@ module.exports = {
       "error",
       "all",
       {
-        ignoreJSX: "all",
-        enforceForArrowConditionals: false,
-        returnAssign: false
+        "ignoreJSX": "all",
+        "enforceForArrowConditionals": false,
+        "returnAssign": false
       }
     ],
     "@typescript-eslint/no-extraneous-class": ["error"],
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-misused-promises": ["error"],
-    '@typescript-eslint/no-this-alias': ['error',{ allowDestructuring: true }],
+    '@typescript-eslint/no-this-alias': ['error',{ "allowDestructuring": true }],
     "no-useless-constructor": "error",
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/prefer-includes": "error",
@@ -60,12 +57,5 @@ module.exports = {
     "@typescript-eslint/unbound-method": [ "error"],
     "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
     "@typescript-eslint/camelcase": "off"
-  },
-  settings: {
-    "import/resolver": {
-      node: {
-        extensions: [".js"]
-      }
-    }
   }
 };

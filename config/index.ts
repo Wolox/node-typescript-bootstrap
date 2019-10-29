@@ -6,6 +6,7 @@ import { DeepPartial } from '../types/utils';
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
 
 if (ENVIRONMENT !== 'production') {
+  // eslint-disable-next-line global-require
   require('dotenv').config();
 }
 
@@ -52,9 +53,8 @@ const config: IConfig = {
       environment: process.env.ROLLBAR_ENV
     },
     session: {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET as string
     }
   },
   todos: {
