@@ -14,5 +14,8 @@ export const databaseError = (message: string): InternalError => setInternalErro
 export const DEFAULT_ERROR = 'default_error';
 export const defaultError = (message: string): InternalError => setInternalError(message, DEFAULT_ERROR);
 
+export const AUTH_ERROR = 'auth_error';
+export const authError = (message: string): InternalError => setInternalError(message, AUTH_ERROR);
+
 export const NOT_FOUND = 'not_found';
 export const notFound = (message: string): InternalError => setInternalError(message, NOT_FOUND);
