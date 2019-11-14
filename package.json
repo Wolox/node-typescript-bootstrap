@@ -69,15 +69,12 @@
     "express": "^4.16.2",
     "express-wolox-logger": "0.0.2",
     "jwt-simple": "^0.5.1",
-    "morgan": "^1.9.1",
     "pg": "^7.4.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
     "sequelize": "^5.19.1",
-    "umzug": "^2.1.0",
-    "winston": "^2.4.0",
-    "winston-daily-rotate-file": "^1.7.2"
+    "umzug": "^2.1.0"
   },
   "devDependencies": {
     "@types/babel-core": "^6.25.6",
@@ -108,7 +105,7 @@
     "dictum.js": "^1.0.0",
     "dotenv": "^5.0.1",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-prettier": "^6.5.0",
     "eslint-config-wolox": "^3.0.2",
     "eslint-config-wolox-node": "^2.2.0",
     "eslint-plugin-import": "^2.18.2",
@@ -117,7 +114,7 @@
     "istanbul": "^0.4.3",
     "jest": "^24.9.0",
     "nodemon": "^1.18.7",
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.0",
     "prompt": "^1.0.0",
     "sequelize-cli": "^5.5.1",
@@ -125,6 +122,6 @@
     "ts-jest": "^24.0.2",
     "ts-node-dev": "1.0.0-pre.40",
     "tslint": "^5.20.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.7.2"
   }
 }
