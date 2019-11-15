@@ -30,7 +30,6 @@ module.exports = {
     "@typescript-eslint/interface-name-prefix": 0,
     "func-call-spacing": "off",
     "@typescript-eslint/func-call-spacing": ["error"],
-    "@typescript-eslint/func-call-spacing": ["error"],
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-empty-interface": ["error", { "allowSingleExtends": false }],

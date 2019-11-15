@@ -1,8 +1,10 @@
-import app from './app';
 import Rollbar from 'rollbar';
+
+import app from './app';
 import * as migrationsManager from './migrations';
 import config from './config';
 import logger from './app/logger';
+
 const defaultPort = 8080;
 
 const port = config.common.api.port || defaultPort;
