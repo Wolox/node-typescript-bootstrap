@@ -13,7 +13,7 @@ export const getUsers = (_: Request, res: Response, next: NextFunction): Promise
 
 export const createUser = (req: Request, res: Response, next: NextFunction): Promise<void> =>
   User.create({ username: req.body.username })
-    .then(user => res.status(statusCodes.created).send({ user }))
+    .then((user: IUserModel) => res.status(statusCodes.created).send({ user }))
     .catch(next);
 
 export const getUserById = (req: Request, res: Response, next: NextFunction): Promise<Response> =>
