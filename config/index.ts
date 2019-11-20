@@ -6,8 +6,7 @@ import { DeepPartial } from '../types/utils';
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
 
 if (ENVIRONMENT !== 'production') {
-  // eslint-disable-next-line global-require
-  require('dotenv').config();
+  require('dotenv').config(); // eslint-disable-line global-require
 }
 
 const configFile = `./${ENVIRONMENT}`;
@@ -21,7 +20,7 @@ const isObject = (variable: unknown): boolean => variable instanceof Object;
 const deepMerge = (target: IConfig, source: DeepPartial<IConfig>): IConfig => {
   if (isObject(target) && isObject(source)) {
     return Object.keys(source).reduce(
-      (output, key) => ({
+      (output: IConfig, key: string) => ({
         ...output,
         [key]: isObject(source[key]) && key in target ? deepMerge(target[key], source[key]) : source[key]
       }),

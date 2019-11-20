@@ -2,7 +2,6 @@ module.exports = {
   "env": {
     "es6": true,
     "node": true,
-    "browser": true,
     "jest": true
   },
   "parser": "@typescript-eslint/parser",
@@ -75,7 +74,7 @@ module.exports = {
     "@typescript-eslint/semi": "error",
     "@typescript-eslint/type-annotation-spacing": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
-    // "@typescript-eslint/typedef": "error", //🚨 We should enable this 
+    "@typescript-eslint/typedef": "error",
     "@typescript-eslint/unbound-method": "error"
   }
 };

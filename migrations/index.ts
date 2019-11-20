@@ -4,7 +4,7 @@ import config from '../config';
 import models from '../app/models';
 import logger from '../app/logger';
 
-export const check = (): Promise<unknown> => {
+export const check = (): Promise<Umzug.Migration[]> => {
   const umzug = new Umzug({
     logging: logger.info,
     storage: 'sequelize',
@@ -21,12 +21,12 @@ export const check = (): Promise<unknown> => {
       pattern: /\.js$/
     }
   });
-  return umzug.pending().then(migrations => {
+  return umzug.pending().then((migrations: Umzug.Migration[]) => {
     if (migrations.length) {
       if (!config.isProduction) {
         return Promise.reject(new Error('Pending migrations, run: npm run migrations'));
       }
-      return umzug.up().catch(err => {
+      return umzug.up().catch((err: never) => {
         logger.error(err);
         return Promise.reject(new Error('There are pending migrations that could not be executed'));
       });

@@ -15,8 +15,8 @@ const truncateTable = (model: typeof Model): Promise<number> => model.destroy(de
 const truncateDatabase = (): Promise<number[]> => Promise.all(tables.map(truncateTable));
 
 beforeEach(
-  (done): Promise<void> =>
+  (done: jest.DoneCallback): Promise<void> =>
     truncateDatabase()
       .then(() => done())
-      .catch(err => done(err))
+      .catch(done)
 );
