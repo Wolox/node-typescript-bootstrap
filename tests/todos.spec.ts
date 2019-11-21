@@ -7,11 +7,11 @@ import app from '../app';
 
 describe('todos', () => {
   describe('/todos GET', () => {
-    it('should return all todos', done => {
+    it('should return all todos', (done: jest.DoneCallback) => {
       request(app)
         .get('/todos')
         .expect(200)
-        .then(res => {
+        .then((res: request.Response) => {
           expect(res.body).toStrictEqual(mockedResponse);
           done();
         });

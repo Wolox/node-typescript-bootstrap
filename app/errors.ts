@@ -1,7 +1,7 @@
-type InternalError = {
+interface InternalError {
   message: string;
   internalCode: string;
-};
+}
 
 const setInternalError = (message: string, internalCode: string): InternalError => ({
   message,

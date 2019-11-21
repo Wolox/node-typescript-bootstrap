@@ -7,11 +7,11 @@ const User = models.users;
 describe('users', () => {
   beforeEach(() => User.bulkCreate([{ username: 'u1' }, { username: 'u2' }]));
   describe('/users GET', () => {
-    it('should return all users', done => {
+    it('should return all users', (done: jest.DoneCallback) => {
       request(app)
         .get('/users')
         .expect(200)
-        .then(res => {
+        .then((res: request.Response) => {
           expect(res.body.length).toBe(2);
           done();
         });
@@ -19,7 +19,7 @@ describe('users', () => {
   });
 
   describe('/users POST', () => {
-    it('should create an user', done => {
+    it('should create an user', (done: jest.DoneCallback) => {
       request(app)
         .post('/users')
         .send({ username: 'u3' })
@@ -33,24 +33,24 @@ describe('users', () => {
   });
 
   describe('/users/:id GET', () => {
-    it('should return user with id 1', done => {
+    it('should return user with id 1', (done: jest.DoneCallback) => {
       request(app)
         .get('/users/1')
         .expect(200)
-        .then(res => {
+        .then((res: request.Response) => {
           expect(res.body).toHaveProperty('username');
           expect(res.body).toHaveProperty('id');
           done();
         });
     });
 
-    it('should return error for user with id 5', done => {
+    it('should return error for user with id 5', (done: jest.DoneCallback) => {
       request(app)
         .get('/users/5')
         .expect(404)
-        .then(response => {
-          expect(response.body).toHaveProperty('message');
-          expect(response.body).toHaveProperty('internal_code');
+        .then((res: request.Response) => {
+          expect(res.body).toHaveProperty('message');
+          expect(res.body).toHaveProperty('internal_code');
           done();
         });
     });
