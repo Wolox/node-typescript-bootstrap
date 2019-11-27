@@ -1,24 +1,25 @@
 import { NextFunction, Request, Response } from 'express';
-import models from '../models';
+import userService from '../services/users';
+import { User } from '../models/user';
 import { statusCodes } from './commons';
 import { notFound } from '../errors';
-import { IUserModel } from '../../types/models';
 
-const User = models.users;
-
-export const getUsers = (_: Request, res: Response, next: NextFunction): Promise<Response> =>
-  User.findAll()
-    .then((users: IUserModel[]) => res.send(users))
+export const getUsers = (_: Request, res: Response, next: NextFunction): Promise<void | Response> =>
+  userService()
+    .find()
+    .then((users: User[]) => res.send(users))
     .catch(next);
 
-export const createUser = (req: Request, res: Response, next: NextFunction): Promise<void> =>
-  User.create({ username: req.body.username })
-    .then((user: IUserModel) => res.status(statusCodes.created).send({ user }))
+export const createUser = (req: Request, res: Response, next: NextFunction): Promise<void | Response> =>
+  userService()
+    .createAndSave({ username: req.body.username })
+    .then((user: User) => res.status(statusCodes.created).send({ user }))
     .catch(next);
 
-export const getUserById = (req: Request, res: Response, next: NextFunction): Promise<Response> =>
-  User.findOne({ where: { id: req.params.id } })
-    .then((user: IUserModel) => {
+export const getUserById = (req: Request, res: Response, next: NextFunction): Promise<void | Response> =>
+  userService()
+    .findOne(req.params.id)
+    .then((user: User) => {
       if (!user) {
         throw notFound('User not found');
       }

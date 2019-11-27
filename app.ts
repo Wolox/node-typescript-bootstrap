@@ -6,6 +6,7 @@ import cors from 'cors';
 import config from './config';
 import * as routes from './app/routes';
 import * as errors from './app/middlewares/errors';
+import 'reflect-metadata';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');

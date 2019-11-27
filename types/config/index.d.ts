@@ -1,5 +1,3 @@
-import { Dialect } from 'sequelize';
-
 type ENV_VAR = string | undefined;
 
 export interface IConfig {
@@ -14,7 +12,7 @@ export interface IConfig {
       database: string;
       username: string;
       password: string;
-      dialect: Dialect;
+      type: string;
       logging: boolean;
     };
     api: {
