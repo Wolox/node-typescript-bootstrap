@@ -12,7 +12,7 @@ export const getUsers = (_: Request, res: Response, next: NextFunction): Promise
 
 export const createUser = (req: Request, res: Response, next: NextFunction): Promise<void | Response> =>
   userService()
-    .createAndSave({ username: req.body.username })
+    .createAndSave({ username: req.body.username } as User)
     .then((user: User) => res.status(statusCodes.created).send({ user }))
     .catch(next);
 

@@ -12,8 +12,4 @@ export class User {
 
   @Column('varchar')
   username: string;
-
-  constructor(userData: UserDTO) {
-    this.username = userData && userData.username;
-  }
 }
