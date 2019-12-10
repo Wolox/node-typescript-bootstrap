@@ -2,7 +2,7 @@ import { ConnectionOptions } from 'typeorm';
 
 import config from '.';
 
-const baseDir = config.runMode === 'DEV' ? '.' : './dist';
+const baseDir = config.runMode === 'DEV' || config.isTesting ? '.' : './dist';
 
 const typeOrmConfig = {
   ...config.common.database,

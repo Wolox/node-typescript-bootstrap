@@ -10,7 +10,6 @@
     "build": "tsc",
     "console": "tsc && node --experimental-repl-await ./dist/console.js",
     "cover": "npm run test-basic -- --coverage",
-    
     "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
     "lint": "tsc --noEmit && eslint \"*/**/*.ts\"",
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.ts$ | xargs eslint",
@@ -29,7 +28,7 @@
     "start-dev": "RUN_MODE=DEV ts-node-dev --respawn --transpileOnly ./server.ts",
     "start": "npm run build && node ./dist/server.js",
     "test": "npm run test-basic -- --runInBand",
-    "test-basic": "NODE_ENV=testing jest --forceExit --silent --detectOpenHandles --verbose",
+    "test-basic": "NODE_ENV=testing jest --forceExit --detectOpenHandles --verbose",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk --detectOpenHandles jest"
   },
   "cacheDirectories": [
