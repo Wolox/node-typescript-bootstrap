@@ -37,6 +37,7 @@ module.exports = {
     "no-useless-constructor": "off",
     "space-before-function-paren": "off",
     "semi": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/array-type": "array",
     "@typescript-eslint/brace-style": ["stroustrup", { "allowSingleLine": true }],
     "@typescript-eslint/camelcase": "allow",
