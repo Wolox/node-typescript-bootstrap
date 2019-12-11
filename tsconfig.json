@@ -1,25 +1,45 @@
 {
   "compilerOptions": {
+    /** Basic Options **/
     "allowJs": true,                          /* Allow javascript files to be compiled. */
-    "baseUrl": ".",                           /* Base directory to resolve non-relative module names. */
-    "checkJs": false,                         /* Report errors in .js files. */
-    "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "checkJs": true,                          /* Report errors in .js files. */
+    "declaration": true,                      /* Generates corresponding '.d.ts' file. */
     "downlevelIteration": true,               /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
+    "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
     "lib": ["esnext"],                        /* Specify library files to be included in the compilation. */
     "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
-    "noUnusedLocals": true,                   /* Report errors on unused locals. */
     "outDir": "dist",                         /* Redirect output structure to the directory. */
-    "skipLibCheck": true,                     /* Skip type checking of all declaration files (*.d.ts). */
     "sourceMap": true,                        /* Generates corresponding '.map' file. */
+    "target": "esnext",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "removeComments": true,                   /* Do not emit comments to output. */
+
+    /** Strict Type-Checking Options **/
+    "alwaysStrict": true,                     /* Parse in strict mode and emit "use strict" for each source file. */
+    "noImplicitAny": true,                    /* Warn on expressions and declarations with an implied 'any' type. */
+    "noImplicitThis": true,                   /* Raise error on 'this' expressions with an implied 'any' type. */
     "strict": true,                           /* Enable all strict type-checking options. */
     "strictFunctionTypes": false,             /* Enable strict checking of function types. */
     "strictPropertyInitialization": false,    /* Enable strict checking of property initialization in classes. */
+    "skipLibCheck": true,                     /* Skip type checking of all declaration files (*.d.ts). */
     "suppressImplicitAnyIndexErrors": true,   /* Suppress --noImplicitAny errors for indexing objects lacking index signatures. */
-    "noImplicitAny": true,                    /* Warn on expressions and declarations with an implied 'any' type. */
-    "target": "esnext",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
-    "paths": {
-      "*": ["node_modules/@types/*", "types/*"]
-    }
+
+    /** Additional Checks **/
+    "noFallthroughCasesInSwitch": true,       /* Report errors for fallthrough cases in switch statement. */
+    "noImplicitReturns": true,                /* Report error when not all code paths in function return a value. */
+    "noUnusedLocals": true,                   /* Report errors on unused locals. */
+
+    /** Source Map Options **/
+    "baseUrl": ".",                           /* Base directory to resolve non-relative module names. */
+    "paths": {                                /* Specify path mapping to be computed relative to baseUrl option. */
+      "*": [
+        "node_modules/@types/*",
+        "types/*"
+      ]
+    },
+    
+    /** Experimental Options **/
+    "emitDecoratorMetadata": true,            /* Enables experimental support for emitting type metadata for decorators. */
+    "experimentalDecorators": true            /* Enables experimental support for ES7 decorators. */
   },
   "include": ["./"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "dist"]
