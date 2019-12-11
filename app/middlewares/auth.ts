@@ -11,7 +11,7 @@ export async function secure(req: Request, res: Response, next: NextFunction): P
   if (auth) {
     const payload = SessionManager.decode(auth);
 
-    const user: User | undefined = await userService().findOne({ where: payload });
+    const user: User | undefined = await userService.findUser({ id: parseInt(payload.id) });
 
     if (user) {
       req.user = user;

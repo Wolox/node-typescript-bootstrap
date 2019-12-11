@@ -4,7 +4,7 @@ import config from '.';
 
 const baseDir = config.runMode === 'DEV' || config.isTesting ? '.' : './dist';
 
-const typeOrmConfig = {
+const typeOrmConfig: ConnectionOptions = {
   ...config.common.database,
   entities: [`${baseDir}/app/models/**/*.{ts,js}`],
   migrations: [`${baseDir}/migrations/migrations/*.{ts,js}`],
@@ -14,7 +14,7 @@ const typeOrmConfig = {
     migrationsDir: './migrations/migrations',
     subscribersDir: './subscribers'
   }
-} as ConnectionOptions;
+};
 
 export default typeOrmConfig;
 

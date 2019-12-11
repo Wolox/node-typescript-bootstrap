@@ -1,16 +1,29 @@
-import { EntityRepository, Repository, getCustomRepository } from 'typeorm';
+import { DeepPartial } from 'utils';
+
+import { getRepository, FindManyOptions, FindConditions, Repository } from 'typeorm';
 import { User } from '../models/user';
 
-// eslint-disable-next-line new-cap
-@EntityRepository(User)
-class UserRepository extends Repository<User> {
-  public findByName(username: string): Promise<User | undefined> {
-    return this.findOne({ username });
-  }
+const userRepository = (): Repository<User> => getRepository(User);
 
-  public createAndSave(user: User): Promise<User> {
-    return this.save(user);
-  }
+export function findUser(options?: FindConditions<User>): Promise<User | undefined> {
+  return userRepository().findOne(options);
 }
 
-export default (): UserRepository => getCustomRepository(UserRepository);
+export function createAndSave(user: User): Promise<User> {
+  return userRepository().save(user);
+}
+
+export function findAll(options?: FindManyOptions): Promise<User[]> {
+  return userRepository().find(options);
+}
+
+export function createMany(users: DeepPartial<User>[]): Promise<User[]> {
+  return userRepository().save(users);
+}
+
+export default {
+  findAll,
+  createMany,
+  findUser,
+  createAndSave
+};

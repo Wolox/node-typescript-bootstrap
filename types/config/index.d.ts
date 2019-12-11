@@ -1,5 +1,7 @@
 type ENV_VAR = string | undefined;
 
+type dialect = 'postgres' | 'mysql' | 'sqlite' | 'mssql' | 'oracle';
+
 export interface IConfig {
   isDevelopment?: boolean;
   isProduction?: boolean;
@@ -13,7 +15,7 @@ export interface IConfig {
       database: string;
       username: string;
       password: string;
-      type: string;
+      type: dialect;
       logging: boolean;
     };
     api: {
