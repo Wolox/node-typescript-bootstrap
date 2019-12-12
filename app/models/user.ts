@@ -1,9 +1,4 @@
-/* eslint-disable new-cap */
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-export interface UserDTO {
-  username: string;
-}
 
 @Entity({ name: 'User' })
 export class User {

@@ -36,6 +36,7 @@ module.exports = {
     "no-use-before-define": "off",
     "no-useless-constructor": "off",
     "space-before-function-paren": "off",
+    "new-cap": "off",
     "semi": "off",
     "class-methods-use-this": "off",
     "@typescript-eslint/no-inferrable-types": "off",
