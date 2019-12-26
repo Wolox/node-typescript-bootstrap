@@ -1,36 +1,24 @@
-import Umzug from 'umzug';
+import { Connection } from 'typeorm';
 
 import config from '../config';
-import models from '../app/models';
 import logger from '../app/logger';
 
-export const check = (): Promise<Umzug.Migration[]> => {
-  const umzug = new Umzug({
-    logging: logger.info,
-    storage: 'sequelize',
-    storageOptions: { sequelize: models.sequelize },
-    migrations: {
-      params: [
-        models.sequelize.getQueryInterface(),
-        models.sequelize.constructor,
-        (): Error => {
-          throw new Error('Migration tried to use old style "done" callback.upgrade');
-        }
-      ],
-      path: `${process.cwd()}/dist/migrations/migrations`,
-      pattern: /\.js$/
-    }
-  });
-  return umzug.pending().then((migrations: Umzug.Migration[]) => {
-    if (migrations.length) {
+export const check = (connection: Connection): Promise<void> =>
+  connection.showMigrations().then((pendingMigrations: boolean) => {
+    logger.info(`Pending migrations: ${pendingMigrations}`);
+    if (pendingMigrations) {
       if (!config.isProduction) {
         return Promise.reject(new Error('Pending migrations, run: npm run migrations'));
       }
-      return umzug.up().catch((err: never) => {
-        logger.error(err);
-        return Promise.reject(new Error('There are pending migrations that could not be executed'));
-      });
+      return connection
+        .runMigrations({ transaction: 'all' })
+        .then(() => {
+          logger.info('Migrations successfully executed');
+        })
+        .catch((err: Error) => {
+          logger.error(err);
+          return Promise.reject(new Error('There are pending migrations that could not be executed'));
+        });
     }
-    return Promise.resolve([]);
+    return Promise.resolve();
   });
-};

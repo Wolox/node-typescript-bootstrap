@@ -1,7 +1,9 @@
 import Rollbar from 'rollbar';
+import { createConnection, Connection } from 'typeorm';
 
 import app from './app';
 import * as migrationsManager from './migrations';
+import typeOrmConfig from './config/typeorm';
 import config from './config';
 import logger from './app/logger';
 
@@ -10,7 +12,8 @@ const defaultPort = 8080;
 const port = config.common.api.port || defaultPort;
 
 Promise.resolve()
-  .then(() => migrationsManager.check())
+  .then(() => createConnection(typeOrmConfig))
+  .then((connection: Connection) => migrationsManager.check(connection))
   .then(() => {
     if (config.common.rollbar) {
       const rollbar = new Rollbar({
@@ -25,4 +28,4 @@ Promise.resolve()
 
     logger.info(`Listening on port: ${port}`);
   })
-  .catch(logger.error);
+  .catch((error: Error) => logger.error(error.stack));

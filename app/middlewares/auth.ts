@@ -1,11 +1,9 @@
 import { Response, NextFunction, Request } from 'express';
 
 import SessionManager, { HEADER_NAME } from '../services/session';
-import Models from '../models';
+import { User } from '../models/user';
+import userService from '../services/users';
 import { authError } from '../errors';
-import { UserModel, IUserModel } from '../../types/models';
-
-const User: UserModel = Models.users;
 
 export async function secure(req: Request, res: Response, next: NextFunction): Promise<void> {
   const auth = req.headers[HEADER_NAME] as string;
@@ -13,7 +11,7 @@ export async function secure(req: Request, res: Response, next: NextFunction): P
   if (auth) {
     const payload = SessionManager.decode(auth);
 
-    const user: IUserModel = await User.findOne({ where: payload });
+    const user: User | undefined = await userService.findUser({ id: parseInt(payload.id) });
 
     if (user) {
       req.user = user;

@@ -1,12 +1,13 @@
-import { Dialect } from 'sequelize';
-
 type ENV_VAR = string | undefined;
+
+type dialect = 'postgres' | 'mysql' | 'sqlite' | 'mssql' | 'oracle';
 
 export interface IConfig {
   isDevelopment?: boolean;
   isProduction?: boolean;
   isTesting?: boolean;
   environment: string;
+  runMode?: string;
   common: {
     database: {
       host: string;
@@ -14,7 +15,7 @@ export interface IConfig {
       database: string;
       username: string;
       password: string;
-      dialect: Dialect;
+      type: dialect;
       logging: boolean;
     };
     api: {

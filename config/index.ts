@@ -39,7 +39,7 @@ const config: IConfig = {
       database: process.env.DB_NAME || 'database',
       username: process.env.DB_USERNAME || 'username',
       password: process.env.DB_PASSWORD || 'password',
-      dialect: 'postgres',
+      type: 'postgres',
       logging: logger.info
     },
     api: {

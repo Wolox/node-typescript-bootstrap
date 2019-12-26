@@ -52,9 +52,12 @@ DB_NAME_TEST="db_project_name_test"
 
 ### Migrations
 
-To create a migration simply run `./node_modules/.bin/sequelize migration:create --name="my-migration-name" --config ./migrations/config.js --migrations-path ./migrations/migrations`.
+To create a migration from changes in models, run `npm run migrations-generate <migration_name>`
+Migrations should be generated after each change you made to your models.
 
-To run them, execute `npm run migrations`.
+To create a migration manually, run `npm run migrations-create <migration_name>`.
+
+To run migrations, execute `npm run migrations`.
 
 ### Starting your app
 Now, to start your app run `npm start` in the rootpath of the project. Then access your app at **localhost:port**, where the port was logged into the console at startup.

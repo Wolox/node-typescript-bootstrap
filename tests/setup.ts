@@ -1,18 +1,9 @@
-import { Model, DestroyOptions } from 'sequelize';
-import models from '../app/models';
+import { getConnection, createConnection } from 'typeorm';
+import typeOrmConfig from '../config/typeorm';
 
-const tables = Object.values(models.sequelize.models);
+const truncateDatabase = (): Promise<void> => getConnection().synchronize(true);
 
-const destroyOptions = {
-  truncate: true,
-  cascade: true,
-  force: true,
-  restartIdentity: true
-} as DestroyOptions;
-
-const truncateTable = (model: typeof Model): Promise<number> => model.destroy(destroyOptions);
-
-const truncateDatabase = (): Promise<number[]> => Promise.all(tables.map(truncateTable));
+beforeAll(() => createConnection(typeOrmConfig));
 
 beforeEach(
   (done: jest.DoneCallback): Promise<void> =>

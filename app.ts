@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import express from 'express';
+import 'reflect-metadata';
 import bodyParser, { OptionsJson, OptionsUrlencoded } from 'body-parser';
 import path from 'path';
 import cors from 'cors';

@@ -1,5 +1,4 @@
 const mockedResponse = [{ name: 'a' }];
-
 jest.doMock('request-promise', () => (): Promise<object> => Promise.resolve(mockedResponse));
 
 import request from 'supertest';

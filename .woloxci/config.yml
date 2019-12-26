@@ -9,7 +9,7 @@ steps:
   copy_node_modules:
     - cp -r $NODE_PATH/ ./
   migrate_db:
-    - npm run migrations
+    - npm run migrations-test
   lint:
     - npm run lint
   test:
