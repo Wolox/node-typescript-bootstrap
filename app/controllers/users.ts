@@ -4,20 +4,22 @@ import { User } from '../models/user';
 import { statusCodes } from './commons';
 import { notFound } from '../errors';
 
-export const getUsers = (_: Request, res: Response, next: NextFunction): Promise<void | Response> =>
-  userService
+export function getUsers(_: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  return userService
     .findAll()
     .then((users: User[]) => res.send(users))
     .catch(next);
+}
 
-export const createUser = (req: Request, res: Response, next: NextFunction): Promise<void | Response> =>
-  userService
+export function createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  return userService
     .createAndSave({ username: req.body.username } as User)
     .then((user: User) => res.status(statusCodes.created).send({ user }))
     .catch(next);
+}
 
-export const getUserById = (req: Request, res: Response, next: NextFunction): Promise<void | Response> =>
-  userService
+export function getUserById(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  return userService
     .findUser({ id: parseInt(req.params.id) })
     .then((user: User) => {
       if (!user) {
@@ -26,3 +28,4 @@ export const getUserById = (req: Request, res: Response, next: NextFunction): Pr
       return res.send(user);
     })
     .catch(next);
+}

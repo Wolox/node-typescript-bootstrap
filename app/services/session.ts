@@ -11,7 +11,7 @@ export function encode(toEncode: string): string {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function decode(toDecode: string): any {
+export function decode<T>(toDecode: string): T {
   return jwt.decode(toDecode, SECRET);
 }
 

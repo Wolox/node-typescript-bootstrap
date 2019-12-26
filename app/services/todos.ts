@@ -10,7 +10,9 @@ export interface Todo {
   completed: boolean;
 }
 
-export const getAllTodos = (): RequestPromise<Todo[]> => rp({ uri: `${baseUrl}/todos`, json: true });
+export function getAllTodos(): RequestPromise<Todo[]> {
+  return rp({ uri: `${baseUrl}/todos`, json: true });
+}
 
 export default {
   getAllTodos
