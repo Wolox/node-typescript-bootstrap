@@ -14,20 +14,19 @@ const statusCodes = {
   [ErrorCode.NOT_FOUND]: 404
 };
 
-export const handle = (
+export function handle(
   error: { internalCode: string | number; message: string },
-  _: unknown,
+  req: unknown,
   res: Response,
   next: NextFunction
-): Response => {
+): Response | void {
   if (error.internalCode) {
     res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
   } else {
     // Unrecognized error, notifying it to rollbar.
-    next(error);
     res.status(DEFAULT_STATUS_CODE);
+    return next(error);
   }
   logger.error(inspect(error));
-  // eslint-disable-next-line @typescript-eslint/camelcase
   return res.send({ message: error.message, internal_code: error.internalCode });
-};
+}
