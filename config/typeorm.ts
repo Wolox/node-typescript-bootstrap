@@ -1,18 +1,20 @@
+import { resolve } from 'path';
+
 import { ConnectionOptions } from 'typeorm';
 
 import config from '.';
 
-const baseDir = config.runMode === 'DEV' || config.isTesting ? '.' : './dist';
+const generatePath = (pathToResolve: string): string => resolve(__dirname, '..', pathToResolve);
 
 const typeOrmConfig: ConnectionOptions = {
   ...config.common.database,
-  entities: [`${baseDir}/app/models/**/*.{ts,js}`],
-  migrations: [`${baseDir}/migrations/migrations/*.{ts,js}`],
-  subscribers: [`${baseDir}/subscribers/**/*.{ts,js}`],
+  entities: [generatePath('./app/models/**/*')],
+  migrations: [generatePath('./migrations/migrations/*')],
+  subscribers: [generatePath('./subscribers/**/*')],
   cli: {
-    entitiesDir: './app/models',
-    migrationsDir: './migrations/migrations',
-    subscribersDir: './subscribers'
+    entitiesDir: generatePath('./app/models'),
+    migrationsDir: generatePath('./migrations/migrations'),
+    subscribersDir: generatePath('./subscribers')
   }
 };
 
