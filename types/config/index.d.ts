@@ -7,7 +7,6 @@ export interface IConfig {
   isProduction?: boolean;
   isTesting?: boolean;
   environment: string;
-  runMode?: string;
   common: {
     database: {
       host: string;
