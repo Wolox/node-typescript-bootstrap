@@ -122,6 +122,6 @@
     "ts-jest": "^24.3.0",
     "ts-node-dev": "1.0.0-pre.44",
     "tslint": "^5.20.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.2"
   }
 }
