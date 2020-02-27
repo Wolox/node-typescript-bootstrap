@@ -20,8 +20,6 @@
     "migrations-generate": "ts-node-dev ./node_modules/typeorm/cli.js migration:generate --config ./config/typeorm.ts -n",
     "outdated": "npm outdated --depth 0",
     "postinstall": "npm run build",
-    "precommit": "npm run lint-diff",
-    "prepush": "npm test",
     "prestart": "npm run lint",
     "pretest": "npm run lint",
     "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
@@ -105,11 +103,13 @@
     "babel-preset-env": "^1.7.0",
     "dictum.js": "^1.0.0",
     "dotenv": "^8.2.0",
-    "eslint": "^5.16.0",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-config-wolox": "^4.0.0",
+    "eslint-config-wolox-node": "^3.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^0.14.3",
+    "husky": "^4.2.3",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
@@ -120,5 +120,11 @@
     "ts-node-dev": "1.0.0-pre.44",
     "tslint": "^5.20.0",
     "typescript": "^3.8.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
   }
 }
