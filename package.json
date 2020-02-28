@@ -74,7 +74,7 @@
     "jwt-simple": "^0.5.1",
     "pg": "^7.18.2",
     "reflect-metadata": "^0.1.13",
-    "request": "^2.88.0",
+    "request": "^2.88.2",
     "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
     "typeorm": "^0.2.22",
