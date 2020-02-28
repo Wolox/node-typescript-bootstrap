@@ -1,5 +1,5 @@
 import rp, { RequestPromise } from 'request-promise';
-import config from '../../config';
+import config from '../config';
 
 const { baseUrl } = config.todos;
 

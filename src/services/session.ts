@@ -1,6 +1,6 @@
 import jwt from 'jwt-simple';
 
-import config from '../../config';
+import config from '../config';
 
 const SECRET: string = config.common.session.secret;
 

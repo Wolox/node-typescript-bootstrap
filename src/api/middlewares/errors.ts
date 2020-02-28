@@ -3,7 +3,7 @@ import { inspect } from 'util';
 import { Response, NextFunction } from 'express';
 
 import * as ErrorCode from '../errors';
-import logger from '../logger';
+import logger from '../../logger';
 
 const DEFAULT_STATUS_CODE = 500;
 

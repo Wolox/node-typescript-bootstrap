@@ -4,10 +4,10 @@ import 'reflect-metadata';
 import bodyParser, { OptionsJson, OptionsUrlencoded } from 'body-parser';
 import path from 'path';
 import cors from 'cors';
-import logger from './app/logger';
+import logger from './logger';
 import config from './config';
-import * as routes from './app/routes';
-import * as errors from './app/middlewares/errors';
+import * as routes from './api';
+import * as errors from './api/middlewares/errors';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');

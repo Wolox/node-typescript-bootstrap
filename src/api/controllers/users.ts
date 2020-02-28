@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import userService from '../services/users';
-import { User } from '../models/user';
+import userService from '../../services/users';
+import { User } from '../../db/models/user';
 import { statusCodes } from './commons';
 import { notFound } from '../errors';
 

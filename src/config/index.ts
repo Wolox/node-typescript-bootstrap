@@ -1,7 +1,7 @@
-import logger from '../app/logger';
+import logger from '../logger';
 
-import { IConfig } from '../types/config';
-import { DeepPartial } from '../types/utils';
+import { IConfig } from '../@types/config';
+import { DeepPartial } from '../@types/utils';
 
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
 

@@ -33,7 +33,7 @@
     "paths": {                                /* Specify path mapping to be computed relative to baseUrl option. */
       "*": [
         "node_modules/@types/*",
-        "types/*"
+        "@types/*"
       ]
     },
     

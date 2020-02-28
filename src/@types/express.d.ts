@@ -4,9 +4,9 @@
  */
 declare namespace Express {
   interface Request {
-    user?: import('models').IUserModel;
+    user?: import('../db/models/user').User;
   }
   interface Response {
-    user?: import('models').IUserModel;
+    user?: import('models').User;
   }
 }

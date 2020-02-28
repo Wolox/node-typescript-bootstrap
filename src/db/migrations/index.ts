@@ -1,7 +1,7 @@
 import { Connection } from 'typeorm';
 
-import config from '../config';
-import logger from '../app/logger';
+import config from '../../config';
+import logger from '../../logger';
 
 export const check = (connection: Connection): Promise<void> =>
   connection.showMigrations().then((pendingMigrations: boolean) => {

@@ -1,8 +1,8 @@
 import { Response, NextFunction, Request } from 'express';
 
-import SessionManager, { HEADER_NAME } from '../services/session';
-import userService from '../services/users';
-import { User } from '../models/user';
+import SessionManager, { HEADER_NAME } from '../../services/session';
+import userService from '../../services/users';
+import { User } from '../../db/models/user';
 import { authError } from '../errors';
 
 export async function secure(req: Request, res: Response, next: NextFunction): Promise<void> {

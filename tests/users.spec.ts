@@ -1,6 +1,6 @@
 import request from 'supertest';
-import userRepository from '../app/services/users';
-import app from '../app';
+import userRepository from '../src/services/users';
+import app from '../src/app';
 
 describe('users', () => {
   beforeEach(() => userRepository.createMany([{ username: 'u1' }, { username: 'u2' }]));

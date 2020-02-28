@@ -2,10 +2,10 @@ import Rollbar from 'rollbar';
 import { createConnection, Connection } from 'typeorm';
 
 import app from './app';
-import * as migrationsManager from './migrations';
-import typeOrmConfig from './config/typeorm';
+import * as migrationsManager from './db/migrations';
+import typeOrmConfig from './db/config';
 import config from './config';
-import logger from './app/logger';
+import logger from './logger';
 
 const defaultPort = 8080;
 
