@@ -97,7 +97,7 @@
     "@types/umzug": "^2.2.3",
     "@types/validator": "^10.11.3",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
-    "@typescript-eslint/eslint-plugin-tslint": "^2.19.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "babel": "6.23.0",
     "babel-core": "6.26.3",
