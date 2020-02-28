@@ -42,7 +42,7 @@ module.exports = {
     "class-methods-use-this": "off",
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/array-type": ["error", { "default": "array"}],
-    "@typescript-eslint/brace-style": ["error","stroustrup", { "allowSingleLine": true }],
+    "@typescript-eslint/brace-style": ["error","1tbs", { "allowSingleLine": true }],
     "@typescript-eslint/camelcase": ["error",{ "properties": "never"}],
     "@typescript-eslint/class-name-casing": ["error", { "allowUnderscorePrefix": true }],
     "@typescript-eslint/consistent-type-assertions": "error",
