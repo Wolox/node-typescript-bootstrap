@@ -77,7 +77,7 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
-    "typeorm": "^0.2.22",
+    "typeorm": "^0.2.24",
     "umzug": "^2.1.0"
   },
   "devDependencies": {
