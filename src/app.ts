@@ -2,7 +2,6 @@
 import express from 'express';
 import 'reflect-metadata';
 import bodyParser, { OptionsJson, OptionsUrlencoded } from 'body-parser';
-import path from 'path';
 import cors from 'cors';
 import logger from './logger';
 import config from './config';
@@ -27,8 +26,6 @@ const bodyParserUrlencodedConfig: OptionsUrlencoded = {
 const app = express();
 
 app.use(cors());
-
-app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
 // Client must send "Content-Type: application/json" header
 app.use(bodyParser.json(bodyParserJsonConfig));
