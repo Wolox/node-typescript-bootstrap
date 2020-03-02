@@ -57,7 +57,7 @@ const config: IConfig = {
     }
   },
   todos: {
-    baseUrl: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com'
+    baseURL: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com'
   }
 };
 
