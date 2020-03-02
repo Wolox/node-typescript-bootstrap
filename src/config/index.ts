@@ -43,8 +43,9 @@ const config: IConfig = {
       logging: logger.info
     },
     api: {
-      bodySizeLimit: process.env.API_BODY_SIZE_LIMIT,
-      parameterLimit: process.env.API_PARAMETER_LIMIT,
+      prefix: '/',
+      bodySizeLimit: Number(process.env.API_BODY_SIZE_LIMIT) || 1024 * 1024 * 10,
+      parameterLimit: Number(process.env.API_PARAMETER_LIMIT) || 10000,
       port: process.env.PORT
     },
     rollbar: {

@@ -1,13 +1,15 @@
-import { Application } from 'express';
+import { Router } from 'express';
 
-import { healthCheck } from './controllers/healthCheck';
-import { getUsers, getUserById, createUser } from './controllers/users';
-import { getTodos } from './controllers/todos';
+import healthRoutes from './routes/health';
+import usersRoutes from './routes/users';
+import todosRoutes from './routes/todos';
 
-export const init = (app: Application): void => {
-  app.get('/health', healthCheck);
-  app.get('/users', getUsers);
-  app.post('/users', createUser);
-  app.get('/users/:id', getUserById);
-  app.get('/todos', getTodos);
-};
+export default function generateAppRoutes(): Router {
+  const app = Router();
+
+  healthRoutes(app);
+  usersRoutes(app);
+  todosRoutes(app);
+
+  return app;
+}

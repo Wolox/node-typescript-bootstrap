@@ -18,8 +18,9 @@ export interface IConfig {
       logging: boolean;
     };
     api: {
-      bodySizeLimit?: ENV_VAR;
-      parameterLimit?: ENV_VAR;
+      prefix: string;
+      bodySizeLimit: number;
+      parameterLimit: number;
       port: ENV_VAR;
     };
     rollbar?: {
