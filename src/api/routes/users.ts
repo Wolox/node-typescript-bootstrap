@@ -9,6 +9,7 @@ export default function generateUserRoutes(app: Router): Router {
 
   route.get('/', usersController.getUsers);
   route.get('/:id', usersController.getUserById);
+  route.post('/', usersController.createUser);
 
   return app;
 }
