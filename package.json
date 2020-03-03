@@ -72,6 +72,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-wolox-logger": "0.0.2",
+    "http-status-codes": "^1.4.0",
     "jwt-simple": "^0.5.1",
     "pg": "^7.18.2",
     "reflect-metadata": "^0.1.13",
