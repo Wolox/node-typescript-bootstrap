@@ -1,6 +1,4 @@
-import { DeepPartial } from 'utils';
-
-import { getRepository, FindManyOptions, FindConditions, Repository } from 'typeorm';
+import { getRepository, FindManyOptions, FindConditions, Repository, DeepPartial } from 'typeorm';
 import { User } from '../models/user';
 
 const userRepository = (): Repository<User> => getRepository(User);
