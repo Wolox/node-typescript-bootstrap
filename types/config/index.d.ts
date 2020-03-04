@@ -32,6 +32,6 @@ export interface IConfig {
     };
   };
   todos: {
-    baseUrl: ENV_VAR;
+    baseURL: ENV_VAR;
   };
 }
