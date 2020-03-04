@@ -114,7 +114,7 @@
     "eslint-config-wolox-node": "^2.2.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^0.14.3",
+    "husky": "^4.2.3",
     "jest": "^24.9.0",
     "nock": "^12.0.2",
     "nodemon": "^2.0.2",
