@@ -1,7 +1,12 @@
-import rp, { RequestPromise } from 'request-promise';
+import axios from 'axios';
 import config from '../config';
 
-const { baseUrl } = config.todos;
+export const BASE_URL = config.todos.baseURL as string;
+
+const client = axios.create({
+  baseURL: BASE_URL,
+  responseType: 'json'
+});
 
 export interface Todo {
   userId: number;
@@ -10,8 +15,9 @@ export interface Todo {
   completed: boolean;
 }
 
-export function getAllTodos(): RequestPromise<Todo[]> {
-  return rp({ uri: `${baseUrl}/todos`, json: true });
+export async function getAllTodos(): Promise<Todo[]> {
+  const response = await client.get<Todo[]>('todos');
+  return response.data;
 }
 
 export default {

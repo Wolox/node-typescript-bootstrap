@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import { Application } from 'express';
 
-import { handle } from '../api/middlewares/errors';
+import { errorHandlerMiddleware } from '../api/middlewares/error_handler';
 import routes from '../api';
 import config from '../config';
 
@@ -49,5 +49,5 @@ export default function expressLoader(app: Application): void {
   /**
    * Middleware to handle internal errors errors
    */
-  app.use(handle);
+  app.use(errorHandlerMiddleware);
 }

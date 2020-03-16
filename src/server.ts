@@ -7,9 +7,7 @@ import typeOrmConfig from './db/config';
 import config from './config';
 import logger from './logger';
 
-const defaultPort = 8080;
-
-const port = config.common.api.port || defaultPort;
+const { port } = config.common.api;
 
 Promise.resolve()
   .then(() => createConnection(typeOrmConfig))

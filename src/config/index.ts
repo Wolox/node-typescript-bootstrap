@@ -46,7 +46,7 @@ const config: IConfig = {
       prefix: '/',
       bodySizeLimit: Number(process.env.API_BODY_SIZE_LIMIT) || 1024 * 1024 * 10,
       parameterLimit: Number(process.env.API_PARAMETER_LIMIT) || 10000,
-      port: process.env.PORT
+      port: Number(process.env.PORT) || 8080
     },
     rollbar: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
@@ -58,7 +58,7 @@ const config: IConfig = {
     }
   },
   todos: {
-    baseUrl: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com'
+    baseURL: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com'
   }
 };
 

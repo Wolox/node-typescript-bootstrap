@@ -7,6 +7,6 @@ declare namespace Express {
     user?: import('../db/models/user').User;
   }
   interface Response {
-    user?: import('models').User;
+    user?: import('../db/models/user').User;
   }
 }

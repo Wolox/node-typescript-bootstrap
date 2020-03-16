@@ -1,10 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
+import HttpStatus from 'http-status-codes';
+
 import userService from '../../services/users';
 import { User } from '../../db/models/user';
-import { statusCodes } from './commons';
-import { notFound } from '../errors';
+import { notFoundError } from '../errors';
 
-export function getUsers(_: Request, res: Response, next: NextFunction): Promise<Response | void> {
+export function getUsers(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   return userService
     .findAll()
     .then((users: User[]) => res.send(users))
@@ -14,7 +15,7 @@ export function getUsers(_: Request, res: Response, next: NextFunction): Promise
 export function createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   return userService
     .createAndSave({ username: req.body.username } as User)
-    .then((user: User) => res.status(statusCodes.created).send({ user }))
+    .then((user: User) => res.status(HttpStatus.CREATED).send({ user }))
     .catch(next);
 }
 
@@ -23,7 +24,7 @@ export function getUserById(req: Request, res: Response, next: NextFunction): Pr
     .findUser({ id: parseInt(req.params.id) })
     .then((user: User) => {
       if (!user) {
-        throw notFound('User not found');
+        throw notFoundError('User not found');
       }
       return res.send(user);
     })

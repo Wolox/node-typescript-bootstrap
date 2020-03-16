@@ -21,7 +21,7 @@ export interface IConfig {
       prefix: string;
       bodySizeLimit: number;
       parameterLimit: number;
-      port: ENV_VAR;
+      port: number;
     };
     rollbar?: {
       accessToken: ENV_VAR;
@@ -33,6 +33,6 @@ export interface IConfig {
     };
   };
   todos: {
-    baseUrl: ENV_VAR;
+    baseURL: ENV_VAR;
   };
 }

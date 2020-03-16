@@ -3,7 +3,7 @@ import { Response, NextFunction, Request } from 'express';
 import SessionManager, { HEADER_NAME } from '../../services/session';
 import userService from '../../services/users';
 import { User } from '../../db/models/user';
-import { authError } from '../errors';
+import { authenticationError } from '../errors';
 
 export async function secure(req: Request, res: Response, next: NextFunction): Promise<void> {
   const auth = req.headers[HEADER_NAME] as string;
@@ -16,5 +16,5 @@ export async function secure(req: Request, res: Response, next: NextFunction): P
       return next();
     }
   }
-  return next(authError);
+  return next(authenticationError);
 }
