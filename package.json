@@ -64,21 +64,22 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-wolox-logger": "^2.0.0",
+    "http-status-codes": "^1.4.0",
     "jwt-simple": "^0.5.1",
     "pg": "^7.18.2",
     "reflect-metadata": "^0.1.13",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
     "typeorm": "^0.2.22",
     "umzug": "^2.1.0"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/babel-core": "^6.25.6",
     "@types/babel-traverse": "^6.25.5",
     "@types/bcryptjs": "^2.4.2",
@@ -112,6 +113,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
     "jest": "^24.9.0",
+    "nock": "^12.0.2",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.0",

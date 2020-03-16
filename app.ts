@@ -7,7 +7,7 @@ import cors from 'cors';
 import logger from './app/logger';
 import config from './config';
 import * as routes from './app/routes';
-import * as errors from './app/middlewares/errors';
+import { errorHandlerMiddleware } from './app/middlewares/error-handler';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { expressMiddleware, expressRequestIdMiddleware } = require('express-wolox-logger');
@@ -41,6 +41,6 @@ if (!config.isTesting) {
 
 routes.init(app);
 
-app.use(errors.handle);
+app.use(errorHandlerMiddleware);
 
 export default app;

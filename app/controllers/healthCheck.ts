@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { statusCodes } from './commons';
+import HttpStatus from 'http-status-codes';
 
 export function healthCheck(_: Request, res: Response): Response {
-  return res.status(statusCodes.success).send({ uptime: process.uptime() });
+  return res.status(HttpStatus.OK).send({ uptime: process.uptime() });
 }
