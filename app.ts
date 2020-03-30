@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import bodyParser, { OptionsJson, OptionsUrlencoded } from 'body-parser';
 import path from 'path';
 import cors from 'cors';
+import logger from './app/logger';
 import config from './config';
 import * as routes from './app/routes';
 import { errorHandlerMiddleware } from './app/middlewares/error-handler';
@@ -33,9 +34,9 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 app.use(bodyParser.json(bodyParserJsonConfig));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig));
 
-app.use(expressRequestIdMiddleware);
+app.use(expressRequestIdMiddleware());
 if (!config.isTesting) {
-  app.use(expressMiddleware);
+  app.use(expressMiddleware({ loggerFn: logger.info }));
 }
 
 routes.init(app);
