@@ -76,7 +76,7 @@
     "reflect-metadata": "^0.1.13",
     "rollbar": "^2.3.9",
     "typeorm": "^0.2.22",
-    "umzug": "^2.1.0"
+    "umzug": "^2.3.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
