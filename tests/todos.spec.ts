@@ -1,9 +1,9 @@
 import request from 'supertest';
 import nock from 'nock';
 
-import app from '../app';
+import app from '../src/app';
 
-import { BASE_URL } from '../app/services/todos';
+import { BASE_URL } from '../src/services/todos';
 
 const TODO_MOCK = {
   userId: 1,
