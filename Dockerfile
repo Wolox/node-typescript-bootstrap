@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM node:12.16.0
+=======
+FROM node:12.16.1
+>>>>>>> master
 
 WORKDIR /home/node/app
 
