@@ -74,7 +74,7 @@
     "jwt-simple": "^0.5.1",
     "pg": "^7.18.2",
     "reflect-metadata": "^0.1.13",
-    "rollbar": "^2.3.9",
+    "rollbar": "^2.15.2",
     "typeorm": "^0.2.22",
     "umzug": "^2.1.0"
   },
