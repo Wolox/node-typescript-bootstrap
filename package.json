@@ -95,7 +95,7 @@
     "@types/supertest": "^2.0.8",
     "@types/umzug": "^2.2.3",
     "@types/validator": "^12.0.1",
-    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "babel": "6.23.0",
