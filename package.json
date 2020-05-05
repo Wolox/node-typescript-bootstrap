@@ -101,7 +101,7 @@
     "babel": "6.23.0",
     "babel-core": "6.26.3",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^26.0.1",
     "babel-preset-env": "^1.7.0",
     "dictum.js": "^1.0.0",
     "dotenv": "^8.2.0",
