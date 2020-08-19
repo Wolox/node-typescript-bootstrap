@@ -72,7 +72,7 @@
     "express-wolox-logger": "^2.0.0",
     "http-status-codes": "^1.4.0",
     "jwt-simple": "^0.5.1",
-    "pg": "^7.18.2",
+    "pg": "^8.3.2",
     "reflect-metadata": "^0.1.13",
     "rollbar": "^2.3.9",
     "typeorm": "^0.2.22",
