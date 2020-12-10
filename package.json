@@ -91,7 +91,7 @@
     "@types/jwt-simple": "^0.5.33",
     "@types/node": "^13.7.6",
     "@types/pg": "^7.14.1",
-    "@types/request-promise": "^4.1.44",
+    "@types/request-promise": "^4.1.47",
     "@types/supertest": "^2.0.8",
     "@types/umzug": "^2.2.3",
     "@types/validator": "^12.0.1",
